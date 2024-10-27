@@ -13,6 +13,8 @@ app = Quart(__name__)
 # Telegram klientini yaratish
 client = None
 
+client = TelegramClient('session_name', api_id, api_hash)
+
 # GET orqali username qabul qilib, ma'lumotni qaytarish funksiyasi
 @app.route('/info', methods=['GET'])
 async def get_info():
@@ -41,7 +43,6 @@ async def get_info():
 # Telegram klientini ishga tushirish va Quart serverini boshlash
 async def main():
     global client
-    client = TelegramClient('session_name', api_id, api_hash)
     await client.start(bot_token=bot_token)  # Telegram clientni ishga tushiramiz
     await app.run_task()  # Quart serverini ishga tushiramiz (async)
 
