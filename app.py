@@ -1,7 +1,6 @@
 from quart import Quart, request, jsonify
 from telethon import TelegramClient, errors
 import asyncio
-import time, telethon
 
 # Telegram API uchun kerakli ma'lumotlar
 api_id = '808393'
@@ -63,11 +62,5 @@ if __name__ == '__main__':
         asyncio.run(main())  # Asosiy event loop orqali kodni ishga tushirish
     except RuntimeError as e:
         print(f"Runtime error occurred: {e}")
-    except telethon.errors.FloodWaitError as e:
-        print(f"Flood wait error. Waiting for {e.seconds} seconds.")
-        time.sleep(e.seconds)
-    except telethon.errors.rpcerrorlist.FloodWaitError as e:
-        print(f"Flood wait error. Waiting for {e.seconds} seconds.")
-        time.sleep(e.seconds)
     except (KeyboardInterrupt, SystemExit):
         print("Dastur to'xtatildi.")
