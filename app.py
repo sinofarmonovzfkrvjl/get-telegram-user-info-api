@@ -66,5 +66,8 @@ if __name__ == '__main__':
     except telethon.errors.FloodWaitError as e:
         print(f"Flood wait error. Waiting for {e.seconds} seconds.")
         time.sleep(e.seconds)
+    except telethon.errors.rpcerrorlist.FloodWaitError as e:
+        print(f"Flood wait error. Waiting for {e.seconds} seconds.")
+        time.sleep(e.seconds)
     except (KeyboardInterrupt, SystemExit):
         print("Dastur to'xtatildi.")
